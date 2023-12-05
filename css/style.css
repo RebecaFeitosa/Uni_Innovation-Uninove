@@ -1,0 +1,653 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Josefin+Slab:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Merriweather+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,300;0,400;1,200;1,300&display=swap');
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
+
+* {
+    /*formata todas as propriedades iniciais*/
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    /*cria variaveis no css*/
+    --font-primary: "Merriweather Sans", serif;
+    --font-secundary: "Josefin Sans", serif;
+    --font-action: "Baloo Da 2", serif;
+}
+
+html {
+    /*scroll da página ao clicar em links*/
+    scroll-behavior: smooth;
+}
+
+
+/*-------------------------- MENU HAMBURGUER/SIDEBAR --------------------*/
+
+
+.menuhamburguer {
+    /*propriedades do menu hamburguer*/
+    /*background-color: #1b3bdf;*/
+    width: 2rem;
+    height: 2rem;
+    position: fixed;
+    z-index: 151;
+    right: 2rem;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+.show-menu .menuhamburguer {
+    right: 16rem;
+}
+
+
+.line {
+    /*propriedade das linhas que formam o menu hamburguer*/
+    width: 100%;
+    height: .1rem;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0.01rem 0.02rem 2px #000;
+    transition: transform 1s;
+    border-radius: 20px;
+}
+
+.show-menu #line1 {
+    transform: rotate(45deg) translate(.3rem, .45rem);
+}
+
+
+.show-menu #line2 {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.show-menu #line3 {
+    transform: rotate(-45deg) translate(.3rem, -.45rem);
+}
+
+
+.menuhamburguer span {
+    /*propriedades do botão fechar no menu*/
+    position: absolute;
+    left: 3rem;
+    background-color: #1b3bdf;
+    color: #000;
+    font-weight: bold;
+    height: 2rem;
+    width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-action);
+    opacity: 0;
+}
+
+.menuhamburguer span::before {
+    /*propriedades do botão fechar antes de ser clicado*/
+    content: "";
+    position: absolute;
+    border-right: .5rem solid #1b3bdf;
+    border-top: .5rem solid transparent;
+    border-left: .5rem solid transparent;
+    border-bottom: .5rem solid transparent;
+    left: -1rem;
+}
+
+
+.show-menu .menuhamburguer:hover span {
+    opacity: 1;
+}
+
+.sidebar {
+    /*propriedades da barra lateral onde fica o menu */
+    width: 20rem;
+    height: 100vh;
+    /*viewport right*/
+    background-color: #ffff;
+    position: fixed;
+    top: 0;
+    right: -20rem;
+    transition: all 1s;
+    border-radius: 10px 0 0 10px;
+    z-index: 150;
+}
+
+.show-menu .sidebar {
+    right: 0;
+}
+
+
+.menu {
+    /*propriedades do menu em si*/
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*define a centralização do menu*/
+}
+
+
+.menuitem {
+    /*propriedades de cada item da lista do menu*/
+    text-align: center;
+    margin-bottom: .5rem;
+}
+
+.menulink {
+    /*propriedades dos links do menu*/
+    font-family: var(--font-action);
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1b3bdf;
+    transition: color 0.9s;
+}
+
+.menulink:hover {
+    /*propriedade quando passar o mouse no link*/
+    color: rgb(0, 0, 0);
+}
+
+.midiasocial {
+    /*propriedades onde esta os links de midia social*/
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.midiasocial i {
+    /*propriedades dos icones de midia social*/
+    color: rgb(255, 255, 255);
+    background-color: #1b3bdf;
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background-color 0.9s;
+}
+
+.midiasocial i:hover {
+    /*propriedade quando passar o mouse nos links de midia social*/
+    background-color: #000;
+}
+
+/*FIM MENU E SIDEBAR*/
+
+
+
+
+/*------------------------CABEÇALHO E PÁGINA PRINCIPAL---------------------*/
+
+.header {
+    /*cabeçalho*/
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.img.wrapper {
+    /*edita as propriedades onde esta a imagem*/
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.8)
+}
+
+.img.wrapper img {
+    /*edita a propria imagem*/
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0.5;
+    animation: zoom 10s;
+}
+
+@keyframes zoom {
+
+    /*animação de zoom na imagem inicial*/
+    0% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.banner {
+    /*edita a posição dos textos*/
+    position: absolute;
+    top: 35%;
+    left: 15%;
+}
+
+.banner h1 {
+    /*edita as propriedades do titulo*/
+    color: rgb(255, 255, 255);
+    font-size: 3.5rem;
+    font-family: var(--font-primary);
+    font-weight: bolder;
+    text-shadow: .2rem .3rem 2px rgba(0, 0, 0, 0.4);
+    line-height: 4.5rem;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: movimentoentrada 2s 0.5s forwards;
+}
+
+
+@keyframes movimentoentrada {
+
+    /*animação para os titulos e botão*/
+    0% {
+        transform: translateY(10rem) rotateY(-30deg);
+    }
+
+    100% {
+        transform: translateY(0) rotateY(0);
+        opacity: 1;
+    }
+}
+
+
+.banner p {
+    /*edita as propriedades do paragrafo*/
+    font-family: var(--font-secundary);
+    color: #ffff;
+    font-size: 2rem;
+    text-shadow: .2rem .3rem 2px rgba(0, 0, 0, .4);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: movimentoentrada 2s 0.7s forwards;
+}
+
+.imglogo {
+    /*edita as propriedades do botão*/
+    float: left;
+    width: 25%;
+    cursor: pointer;
+    opacity: 0;
+    animation: movimentoentrada 2s 0.9s forwards;
+}
+
+.banner img:hover {
+    /*classe que identifica uma ação no botão*/
+    opacity: 0.8;
+    color: rgb(17, 0, 253);
+}
+
+/*FIM PÁGINA INICIAL*/
+
+
+
+/*----------------------------PÁGINA SERVIÇOS-----------------------------*/
+
+
+.servicos {
+    /*propriedades da div serviços*/
+    display: grid;
+    /*separa em colunas*/
+    grid-template-columns: repeat(16, 1fr);
+    /*didiviu em 16 colunas*/
+    grid-template-rows: repeat(6, 8rem);
+    /*por 8 linhas*/
+    row-gap: .5rem;
+    background-color: #eee;
+}
+
+.servico:nth-child(1) {
+    grid-column: 4 / 7;
+    grid-row: 1 / 3;
+}
+
+.servico:nth-child(2) {
+    grid-column: 4 / 7;
+    grid-row: 3 / 5;
+}
+
+.servico:nth-child(3) {
+    grid-column: 4 / 7;
+    grid-row: 5 / 5;
+}
+
+.servico:nth-child(4) {
+    grid-column: 11 / 14;
+    grid-row: 1 / 3;
+}
+
+.servico:nth-child(5) {
+    grid-column: 11 / 14;
+    grid-row: 3 / 5;
+}
+
+.servico:nth-child(6) {
+    grid-column: 11 / 14;
+    grid-row: 5 / -1;
+}
+
+.servico-cabecalho {
+    /*propriedades do cabeçalho de serviços*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+}
+
+.servico-cabecalho h1 {
+    /*propriedades do h1 em serviços*/
+    font-family: var(--font-primary);
+    font-size: 3rem;
+    color: #1b3bdf;
+    font-weight: bolder;
+    border-bottom: solid 3px #000;
+    margin-bottom: 1.5rem;
+}
+
+.sessao-servicos {
+    /*propriedades do corpo da div serviços*/
+    background-color: #ffff;
+}
+
+.servico-cabecalho {
+    /*propriedades do cabeçaho dentro da div serviços*/
+    display: flex;
+    align-items: center;
+}
+
+.servico-cabecalho i {
+    /*propriedades dos icones em serviços*/
+    font-size: 2.5rem;
+    color: #1b3bdf;
+}
+
+.servico-cabecalho h3 {
+    /*propriedade do titulo h3 em serviços*/
+    font-family: var(--font-secundary);
+    font-size: 1.5rem;
+    padding-left: 1rem;
+}
+
+.servico-text {
+    /*propriedades do texto em serviços*/
+    font-family: var(--font-secundary);
+    margin-top: 1rem;
+}
+
+.servicos-img-wrapper {
+    /*posição da imagem de serviços*/
+    grid-column: 7 / 11;
+    grid-row: 2 / 6;
+}
+
+
+.servicos-img-wrapper img {
+    /*propriedades da imagem sem serviços*/
+    object-fit: cover;
+    width: 75%;
+    border-radius: 20px;
+    margin-top: 5%;
+}
+
+/*FIM PÁGINA SERVIÇOS*/
+
+
+
+
+/*---------------------------PÁGINA QUEM SOMOS---------------------------*/
+
+
+.qscabecalho {
+    /*propridades do cabecalho quem somos*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qscabecalho h1 {
+    /*propriedades do titulo quem somos*/
+    font-family: var(--font-primary);
+    font-size: 3rem;
+    color: #1b3bdf;
+    border-bottom: solid 3px #000;
+    margin-bottom: 1.5rem;
+}
+
+.qscabecalho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: #000;
+}
+
+.qscabecalho h1 {
+    /*propriedades do h1 em serviços*/
+    font-family: var(--font-primary);
+    font-size: 3rem;
+    color: #1b3bdf;
+    font-weight: bolder;
+    border-bottom: solid 3px #000;
+    margin-bottom: 1.5rem;
+}
+
+.qscabecalho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: #000;
+}
+
+
+.subtitulo {
+    display: flex;
+}
+
+.subtitulo h2 {
+    /*propriedades do h1 em serviços*/
+    font-family: var(--font-secundary);
+    font-size: 1.3rem;
+    color: #1b3bdf;
+    font-weight: bolder;
+    border-bottom: solid 3px #000;
+    margin-bottom: 4rem;
+    margin-left: 2%;
+    text-transform: uppercase;
+}
+
+.quem-somostxt1 {
+    font-family: var(--font-secundary);
+    font-size: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: center;
+}
+
+.quem-somostxt3 {
+    font-family: var(--font-secundary);
+    font-size: 1rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-bottom: 15%;
+}
+
+.qsformato {
+    /*propriedades da posição do texto em quem somos*/
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(6, 8rem);
+    row-gap: .5rem;
+}
+
+.quem-somostxt2 {
+    /*propriedades da div serviços*/
+    display: grid;
+    /*separa em colunas*/
+    grid-template-columns: repeat(10, 0.7fr);
+    /*didiviu em 16 colunas*/
+    grid-template-rows: repeat(5, 2rem);
+    /*por 8 linhas*/
+    row-gap: .5rem;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-primary);
+    text-align: center;
+}
+
+.quemsomos1:nth-child(1) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.quemsomos2:nth-child(2) {
+    grid-column: 7 / 9;
+    grid-row: 4 / 4;
+}
+
+.quemsomos3:nth-child(3) {
+    grid-column: 5 / 5;
+    grid-row: 3 / 4;
+}
+
+.quemsomos4:nth-child(4) {
+    grid-column: 3 / 3;
+    grid-row: 4 / 4;
+}
+
+.quemsomos5:nth-child(5) {
+    grid-column: 8 / 9;
+    grid-row: 1 / 1;
+}
+
+
+
+.quem-somostxt2 i {
+    /*propriedades dos icones em serviços*/
+    font-size: 2rem;
+    color: #000000;
+}
+
+
+.quem-somostxt2 .quemsomos1 i:hover {
+    color: #ED213A;
+    color: -webkit-linear-gradient(to right, #93291E, #ED213A);
+    color: linear-gradient(to right, #93291E, #ED213A);
+    font-size: 2.4rem;
+}
+
+.quem-somostxt2 .quemsomos2 i:hover {
+    color: #d66320;
+    font-size: 2.4rem;
+}
+
+.quem-somostxt2 .quemsomos3 i:hover {
+    color: #383838;
+    font-size: 2.4rem;
+}
+
+.quem-somostxt2 .quemsomos4 i:hover {
+    color: #52c04e;
+    font-size: 2.4rem;
+}
+
+.quem-somostxt2 .quemsomos5 i:hover {
+    color: #019bfa;
+    font-size: 2.4rem;
+}
+
+
+
+.quem-somos h3 {
+    /*propriedade do titulo h3 em serviços*/
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    padding-left: 1rem;
+}
+
+/*FIM PÁGINA QUEM SOMOS*/
+
+
+
+
+/*-------------------------------RODAPÉ--------------------------------*/
+
+footer {
+    /*propriedades do rodapé*/
+    width: 100%;
+    height: 7rem;
+    background-color: #000;
+    color: #1b3bdf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteudorodape {
+    /*posição dos objetos no rodapé*/
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.conteudorodape p {
+    /*propriedades do conteudo no paragrafo do rodapé*/
+    font-family: var(--font-secundary);
+    color: #8395ec;
+    font-size: 1.2rem;
+}
+
+.listaredes a {
+    /*propriedades dos links no rodapé*/
+    margin: 0 2rem;
+    color: #8395ec;
+    font-size: 1.3rem;
+}
+
+.listaredes ul {
+    display: flex;
+}
+
+.linktopo {
+    /*propriedades do botão voltar pro topo*/
+    position: fixed;
+    right: 3rem;
+    bottom: 3rem;
+    width: 3rem;
+    height: 3rem;
+    background: #36D1DC;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5B86E5, #36D1DC);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #000;
+    border-radius: 25px;
+    box-shadow: 0 0.1rem 0.6rem #0000;
+}
+
+.linktopo:hover {
+    background: #009FFF;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ec2F4B, #009FFF);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ec2F4B, #009FFF);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    ;
+}
+
+/*FIM RODAPÉ*/
